@@ -43,7 +43,7 @@ import MyButton from "./MyButton.vue"
   
   .joined{
     color:white;
-    font-size: .8rem;
+    font-size: .7rem;
     text-transform: uppercase;
     letter-spacing: 4px;
     word-spacing: 3px;

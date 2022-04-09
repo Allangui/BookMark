@@ -168,6 +168,7 @@ import MyButton from "./MyButton.vue"
     .content{
       display: flex;
       flex-direction: column;
+      margin-top: 20px;
       p{
         margin:15px auto 30px;
       }

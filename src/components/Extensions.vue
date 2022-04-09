@@ -62,7 +62,7 @@ import MyButton from "./MyButton.vue"
       flex-direction: column;
       align-items: center;
       padding:25px;
-      width:85vw;
+      width:80vw;
       margin:0 auto;
       -webkit-box-shadow: 0px 10px 7px 15px rgba(0,0,0,0.25); 
       box-shadow: 0px 15px 15px 0px rgba(0,0,0,0.05);
@@ -90,7 +90,7 @@ import MyButton from "./MyButton.vue"
           position:absolute;
           left:-25px;
           top:0;
-          width:85vw;
+          width:80vw;
           height:4px;
 
         }
