@@ -1,5 +1,5 @@
 <template>
-    <div id="mainHeading">
+    <div id="mainHeading" :class="mq.s ? 'mainHeadingMobile':'mainHeadingDesk'" >
       <div class="forBackImg">
         <img src="../../public/illustration-hero.svg" alt="image-hero">
       </div>
@@ -25,6 +25,7 @@
 <script>
 import MyButton from "./MyButton.vue"
     export default {
+        inject:["mq"],
         components: {
           MyButton:MyButton,
         },
@@ -33,9 +34,59 @@ import MyButton from "./MyButton.vue"
 </script>
 
 <style lang="scss" scoped>
+.mainHeadingDesk{
+  align-items: center;
+  margin-top: 50px;
+  .forBackImg{
+    order:2;
+    width: 50%;
+    img{
+      padding-right: 20px;
+    }
+  }
+  section{
+    order:1;  
+    width: 50%;
+    padding-left:100px;
+    h1{
+      font-size: 2rem;
+      margin:0;
+    }
+    p{
+      max-width: 90%;
+      margin:25px 0 30px;
+      font-size: .9rem;
+    }
+    .flexButtons{
+      justify-content: flex-start;
+    }
+  }
+}
+.mainHeadingMobile{
+  flex-direction: column;
+  
+    .forBackImg{
+      order:1;
+  }
+      section{
+      order:2;
+      text-align: center;
+      h1{
+        font-size: 1.6rem;
+        max-width: 85vw;
+        margin:0 auto;
+      }
+      p{
+        max-width: 80vw;
+        margin:25px auto 25px;
+      }
+      .flexButtons{
+      justify-content: center;
+      }
+    }
+}
 #mainHeading{
   display: flex;
-  flex-direction: column;
   .forBackImg{
     height:auto;
     position :relative;
@@ -51,31 +102,21 @@ import MyButton from "./MyButton.vue"
       background-color: var(--primaryBlue);
     }
     img{
-    order:1;
-    width:95vw;
+    width:95%;
     z-index: 11;
     height:auto;
     position: relative;
     }
   }
   section{
-    order:2;
-    text-align: center;
+
     margin:50px auto;
     h1{
-      font-size: 1.6rem;
-      margin:0 auto;
       font-weight: 500;
       color: var(--neutralDarkBlue);
-      max-width: 85vw;
-    }
-    p{
-      max-width: 80vw;
-      margin:25px auto 25px;
     }
     .flexButtons{
       display: flex;
-      justify-content: center;
       column-gap: 20px;
       max-width: 95vw;
       margin:0 auto;

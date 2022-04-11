@@ -35,7 +35,7 @@ export default {
 
 </script>
 
-<style>
+<style lang="scss">
 :root{
   --primaryBlue: hsl(231, 69%, 60%);
   --primaryRed: hsl(0, 94%, 66%);
@@ -52,7 +52,6 @@ p{
   line-height: 1.3rem;
   color : var(--neutralBlue);
   letter-spacing: .02rem;
-  text-align: center;
 }
 h2{
   font-size: 1.4rem;
@@ -73,13 +72,28 @@ h3{
 .btnBlue{
   color:white;
   background-color: var(--primaryBlue);
+  &:hover{
+    color:var(--primaryBlue);
+    background-color: white;
+    border :2px solid var(--primaryBlue);
+  }
 }
 .btnGray{
   color: var(--neutralDarkBlue);
   background-color: hsl(228, 14%, 93%);
+    &:hover{
+      color:var(--neutralDarkBlue);
+      background-color: white;
+      border :2px solid var(--neutralDarkBlue);
+    }
 }
 .btnRed{
   color: white;
   background-color: var(--primaryRed);
+  &:hover{
+    color:var(--primaryRed);
+    background-color: white;
+    border :2px solid var(--primaryRed);
+  }
 }
 </style>

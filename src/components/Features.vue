@@ -1,5 +1,5 @@
 <template>
-    <div id="mainFeatures">
+    <div id="mainFeatures" :class="mq.s ? 'mainFeaturesMobile':'mainFeaturesDesk'">
       <h2>Features</h2>
       <p>
         Our aim is to make it quick and easy for you to access your favourite websites. 
@@ -59,6 +59,7 @@
 <script>
 import MyButton from "./MyButton.vue"
     export default {
+      inject:["mq"],
       components: {
         MyButton : MyButton,
       },
@@ -71,25 +72,103 @@ import MyButton from "./MyButton.vue"
 </script>
 
 <style lang="scss" scoped>
+//°°°°°°°°°°°°°°°°°°°°°°°°°°°°° DESKTOP °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+.mainFeaturesDesk{
+  p{
+    max-width: 450px;
+    text-align: center;
+  }
+  .navFeatures{
+    max-width: 650px;
+    margin: 0 auto;
+    li{
+        .linkIsActive{
+          &:after{
+            width:100%;
+          }
+        }
+    }
+  }
+  .feature{
+    .forBackImg{
+      width:50%;
+      img{
+        width: 80%;
+        padding-bottom:60px;
+      }
+    }
+    .content{
+      width:50%;
+      padding: 0 20px 0 100px;
+      justify-content: center;
+      h2{
+        margin:0 !important;
+        text-align: start;
+      }
+      p{
+        margin:15px 0 30px !important;
+        text-align: start;
+      }
+      .myBtn{
+        margin:0;
+        align-self: flex-start;
+      }
+    }
+  }
+}
+//°°°°°°°°°°°°°°°°°°°°°°°°°°°°° MOBILE °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+
+.mainFeaturesMobile{
+    p{
+      max-width: 80vw;
+      text-align: center;
+    }
+    .navFeatures{
+      flex-direction: column;
+      li{
+        &:first-child{
+          border-top: solid 1px rgba(37, 43, 70,.1);
+        }
+        .linkIsActive{
+          &:after{
+            width:40%;
+          }
+        }
+      }
+    }
+    .feature{
+      flex-direction: column;
+      .forBackImg{
+        img{
+          width:90%;
+          padding-bottom:40px;
+        }
+      }
+      .content{
+        margin-top: 20px;
+        .myBtn{
+          margin:0 auto;
+        }
+      }
+    }
+}
+//°°°°°°°°°°°°°°°°°°°°°°°°°°°°° COMMON °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+
 #mainFeatures{
   margin:75px auto 0;
 
   p{
-    max-width: 80vw;
     margin:25px auto 40px;
+    
   }
   .navFeatures{
     display: flex;
-    flex-direction: column;
     align-items: center;
     row-gap: 10px;
     margin-bottom: 50px;
     li{
       width:85%;
       border-bottom: solid 1px rgba(37, 43, 70,.1);
-      &:first-child{
-        border-top: solid 1px rgba(37, 43, 70,.1);
-      }
       a{
         display: inline-block;
         text-align: center;
@@ -97,11 +176,13 @@ import MyButton from "./MyButton.vue"
         width:100%;
         background-color: transparent;
         border:none;
-        
         cursor: pointer;
         color:var(--neutralBlue);
         font-size: .9rem;
         font-weight: 500;
+        &:hover{
+          color:var(--primaryRed);
+        }
       }
       .linkIsActive{
           position: relative;
@@ -112,7 +193,6 @@ import MyButton from "./MyButton.vue"
             bottom:0;
             left:50%;
             transform: translateX(-50%);
-            width:40%;
             height:2px;
             background-color: var(--primaryRed);
           }
@@ -138,7 +218,6 @@ import MyButton from "./MyButton.vue"
 }
   .feature{
     display:flex;
-    flex-direction: column;
     .forBackImg{
     height:auto;
     position :relative;
@@ -155,11 +234,9 @@ import MyButton from "./MyButton.vue"
     }
     img{
     float: right;
-    width:90vw;
     z-index: 11;
     height:auto;
     position: relative;
-    padding-bottom:40px;
     }
   }
     h2{
@@ -168,13 +245,9 @@ import MyButton from "./MyButton.vue"
     .content{
       display: flex;
       flex-direction: column;
-      margin-top: 20px;
       p{
         margin:15px auto 30px;
       }
-      .myBtn{
-        margin: 0 auto;
-    }
     }
   }
 }

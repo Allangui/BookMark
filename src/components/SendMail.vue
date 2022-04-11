@@ -1,5 +1,5 @@
 <template>
-    <div id="mainSendMail">
+    <div id="mainSendMail" :class="mq.s ? 'mainSendMailMobile':'mainSendMailDesk'">
       <span class="joined" >35,000+ already joined</span>
       <h4>Stay up-to-date with what we’re doing</h4>
       <div class="formMail">
@@ -15,6 +15,7 @@
 <script>
 import MyButton from "./MyButton.vue"
     export default {
+      inject:["mq"],
         components: {
           MyButton:MyButton,
         },
@@ -34,6 +35,37 @@ import MyButton from "./MyButton.vue"
 </script>
 
 <style lang="scss" scoped>
+.mainSendMailDesk{
+  align-items: center;
+  span{
+    max-width: 500px;
+  }
+  h4{
+    max-width: 500px;
+    font-size: 1.6rem;
+  }
+  .formMail{
+    max-width: 450px;
+    column-gap: 20px;
+    align-items: flex-start;
+    justify-content: space-between;
+    h4{
+      font-size: 1.4rem;
+    }
+    .forInputEmail{
+      
+    }
+    .btnContact{
+      min-width: 30%;
+    }
+  }
+}
+.mainSendMailMobile{
+  .formMail{
+    flex-direction: column;
+    row-gap: 15px;
+  }
+}
 #mainSendMail{
   margin-top:75px;
   padding: 60px 25px 50px;
@@ -51,16 +83,15 @@ import MyButton from "./MyButton.vue"
   }
   h4{
     color: white;
-    font-size: 1.3rem;
-    margin:20px auto 30px;
+    letter-spacing: 2px;
+    margin:30px auto 40px;
     font-weight: 500;
     text-align: center;
   }
 
   .formMail{
     display:flex;
-    flex-direction: column;
-    row-gap: 15px;
+    width: 100%;
     .emailErrorBg{
         background-color: var(--primaryRed);
         border-radius: 5px;
@@ -76,11 +107,13 @@ import MyButton from "./MyButton.vue"
         }
       }
     .forInputEmail{
+      width:100%;
+      border:none;
       input{
         outline: transparent;
         padding:15px 30px 15px 15px;
         font-size: .8rem;
-        border:none;
+        border:2px solid transparent;
         border-radius: 5px;
         width:100%;
         
@@ -98,8 +131,8 @@ import MyButton from "./MyButton.vue"
       }
     }
     .btnContact{
-      
-  }
+      padding:12px 15px;
+    }
   }
 
 }

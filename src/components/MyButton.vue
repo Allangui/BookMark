@@ -17,7 +17,7 @@
 
 <style lang="scss" scoped>
 button{
-    border:none;
+    border :2px solid transparent;
     border-radius: 5px;
     padding:15px ;
     font-weight: 500;
@@ -28,5 +28,6 @@ button{
     box-shadow: -1px 7px 5px 0px rgba(0,0,0,0.1);
     cursor: pointer;
     outline: transparent;
+    transition: all .5s ease;
 }
 </style>

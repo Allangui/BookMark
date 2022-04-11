@@ -1,5 +1,5 @@
 <template>
-    <div id="mainFaq">
+    <div id="mainFaq" :class="mq.s ? 'mainFaqMobile':'mainFaqDesk'">
       <h2>Frequently Asked Questions</h2>
       <p class="pFAQ">Here are some of our FAQs. If you have any other questions you’d like 
         answered please feel free to email us.
@@ -24,6 +24,7 @@
 import datasFAQ from "../../datasFAQ.json"
 import MyButton from "./MyButton.vue"
     export default {
+      inject:["mq"],
       components: {
         MyButton : MyButton,
       },
@@ -36,6 +37,24 @@ import MyButton from "./MyButton.vue"
 </script>
 
 <style lang="scss" scoped>
+.mainFaqDesk{
+  .pFAQ{
+    max-width: 450px;
+  }
+  ul{
+    width: 85vw;
+    max-width: 500px;
+  }
+}
+.mainFaqMobile{
+  .pFAQ{
+    max-width: 80vw;
+  }
+  ul{
+    width: 85vw;
+    max-width: 85vw;
+  }
+}
 #mainFaq{
   margin-top:75px;
   display: flex;
@@ -45,16 +64,14 @@ import MyButton from "./MyButton.vue"
     margin:20px auto;
   }
   .pFAQ{
-    max-width: 80vw;
     margin:10px auto 50px;  
+    text-align: center;
   }
   ul{
     display: flex;
     align-self: center;
     flex-direction: column;
     margin:0 auto;
-    width: 85vw;
-    max-width: 85vw;
     .text-enter-active{
       transition: all .5s cubic-bezier(0.63, 0.64, 0, 1.02);
     }
@@ -70,16 +87,19 @@ import MyButton from "./MyButton.vue"
     li{
       padding:15px 0;
       border-bottom: solid 1px rgba(37, 43, 70,.1);
+      cursor: pointer;
       .flexQuestion{
         display: flex;
         justify-content: space-between;
         align-items: center;
         span{
           font-size: .8rem;
-          // BUG ON CHANGE AT .8REM ????
           line-height: 1.3rem;
           color : var(--neutralDarkBlue);
           font-weight: 500;
+          &:hover{
+            color:var(--primaryRed);
+          }
         }
         .arrowClose{
           transition: all .5s ease-in-out;
@@ -103,7 +123,6 @@ import MyButton from "./MyButton.vue"
         text-align: start;
         margin:30px auto 20px;   
         overflow: hidden;  
-        // transition: all .5s ease-in-out;
       }
     }
   }
